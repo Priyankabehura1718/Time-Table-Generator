@@ -1,88 +1,139 @@
-# Timetable Generator Web-Application
-![Django](https://img.shields.io/badge/Made%20with-Django-blue?style=?style=plastic&logo=appveyor&logo=data:image/png;base64)
+# AI-Powered Chatbot
 
-###### This was final project with ![Aditya Jethani](https://github.com/okaditya84) for Analysis of Algorithm in Semester 4
+A simple yet powerful command-line chatbot application built with Python, leveraging OpenAI's GPT-4 for natural language understanding and response generation. This chatbot can engage in conversational interactions and provide information on a wide range of topics.
 
-This is the Activity Scheduling Project which will generate the timetable of different sections for user with required inputs.
+# Features
 
-## Configuration Setup
-<b>Project Configuration Guidelines(Step by Step):</b>
+- *Conversational Interaction*: Engage with the AI in a natural and fluid manner.
+- *Powered by GPT-4*: Utilizes OpenAI's advanced language model for accurate and meaningful responses.
+- *Easy to Use*: Simple command-line interface for straightforward interaction.
 
-To run this project on your local server, follow the following steps:
-* Install Python 3.8 on your Computer from the official website.
-* Install Django on your computer by running this command 
-                      
-                      pip install Django(For windows)   
-                      python -m pip install Django(For Mac/Linux)
+# Requirements
 
-* Install Django Crispy Forms by running this command:
+- *Python 3.x*
+- *OpenAI Python Client Library*: Install via pip install openai
 
-                      pip install django-crispy-forms
-* Install Django Multi select fields on your computer:
+# Installation and Setup
 
-                      pip install django-multiselectfield
-* If you don’t have Git Bash/Git Bucket on your computer. Then install it first.
-* Run this command on your git terminal
+## Step 1: Obtain OpenAI API Key
 
-                      git clone “https://github.com/mHuzefa/TimetableGeneratorApp.git”
-* After clonning the repository in your computer, run the command:
+1. Sign up at [OpenAI](https://beta.openai.com/signup/) to obtain an API key.
+2. Replace 'YOUR_API_KEY' in the chatbot.py file with your actual API key.
 
-                      cd TimetableGeneratorApp
-* Run this command to run server on your localhost:8000
+## Step 2: Clone the Repository
 
-                       python manage.py runserver
-- App is running on your Computer now. Enjoy!!!
+sh
+
+git clone https://github.com/yourusername/ai-powered-chatbot.git
+
+cd ai-powered-chatbot
 
 
+## Step 3: Install Dependencies
+
+pip install -r requirements.txt
+
+## Step 4: Set Up the API Key
+
+Open chatbot.py and replace the placeholder with your OpenAI API key:
+
+openai.api_key = 'YOUR_API_KEY'
+
+# Usage
+
+Run the chatbot using the following command:
+
+python chatbot.py
+
+# Interaction
+
+- Start the chatbot and type your messages.
+- The chatbot will respond to your queries.
+- Type 'exit' to end the conversation and quit the application.
+
+# Example
+
+Welcome to the AI-Powered Chatbot!
+Type 'exit' to quit the chat.
+
+You: Hello, chatbot!
+Chatbot: Hello! How can I assist you today?
+
+You: What's the weather like today?
+Chatbot: I'm not able to check real-time weather updates, but you can check a weather website or app for the latest information.
+
+You: exit
+Exiting the chatbot. Goodbye!
+
+# Contributing
+We welcome contributions to enhance this project. Please follow these steps:
+
+- Fork the repository.
+- Create a new branch (git checkout -b feature-branch).
+- Commit your changes (git commit -m 'Add some feature').
+- Push to the branch (git push origin feature-branch).
+- Open a pull request.
+
+Please make sure to update tests as appropriate.
+
+# License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+# Contact
+
+For any questions or suggestions, please open an issue or contact yourname.
+
+# Disclaimer:
+
+This project is intended for educational purposes and may not be suitable for production use without further enhancements and security reviews.
+
+### Additional Files
+
+**requirements.txt**:
+
+### openai
+
+**.gitignore**:
+
+### pycache/ *.pyc .env
+
+*File Structure*
+
+AI-Powered-Chatbot/ │ ├── chatbot.py ├── requirements.txt ├── .gitignore └── README.md
+
+*`chatbot.py`Content*
+
+python
+import openai
+
+# Set your OpenAI API key here
+openai.api_key = 'YOUR_API_KEY'
+
+def get_chatbot_response(user_input):
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "user", "content": user_input}
+        ]
+    )
+    return response['choices'][0]['message']['content']
+
+def main():
+    print("Welcome to the AI-Powered Chatbot!")
+    print("Type 'exit' to quit the chat.")
+    
+    while True:
+        user_input = input("\nYou: ")
+        if user_input.lower() == 'exit':
+            print("Exiting the chatbot. Goodbye!")
+            break
+        
+        response = get_chatbot_response(user_input)
+        print(f"Chatbot: {response}")
+
+if __name__ == "__main__":
+    main()
 
 
-
-
-
-
-## Alogrithm
-When first we started the project we chosed the Greedy algorithm to perform for our project but as days went by, we could not complete it in greedy way so the most suitable approach we reached, was <b>Randomized Brute Force</b> as some of the values generated in algorithm was random in order to fulfill the requirements. This algorithm is connected with the database in the back-end where the data saved in the database will be passed through the algorithm to generate the timetable. Our Algorithm on the console is just working perfectly but as we were learning the python and Django for the first time so that got us into the problem to connect the database with the algorithm but we are working on it untill we have time.
-
-## Features
-1. User-Friendly GUI which helps you upload data on the go.
-2. You can generate timetable for one class at a time.
-3. You can download the PDF file of the timetable.
-4. A responsive app which can be used in any device.
-
-## Quick Demo   
-![Quick Demo](https://github.com/mrabdullahdev/CS311S20PID27/blob/master/Home%20-%20Activity%20Scheduling%20App.webm%20-%20Google%20Drive.gif "Quick Demo of website")
-
-## Desktop View
-![Desktop View](Screenshots/main-page.png "Main Page")
-## Mobile View
-![Mobile View](Screenshots/mobile-view.png "Mobile View - Responsive")
-## Timetable
-![Timetable](Screenshots/Timetable.png "Timetable")
-## Course Interface
-![Add Course](Screenshots/Add-Course.png "Add Course")
-
-## Professor Interface
-![Add Professor](Screenshots/Add-Professor.png "Add Professor")
-## Classroom Interface
-![Add Classroom](Screenshots/Add-classroom.png "Add Classroom")
-
-## Class(Section) Interface
-![Add Section](Screenshots/add-Class.png "Add Section")
-
-
-## View Table Interface
-![View Table](Screenshots/Professo-Table.png "View Table")
-
-![View Table2](Screenshots/Class-Table.png "Class table")
-
-
-
-## Update Page Interface
-![update page](Screenshots/update.png "Update Page")
-
-
-## Delete Page Interface
-![Delete Page](Screenshots/delete.png "delete page")
-
-
-
+This README file provides comprehensive information about the project, making it easy for others to understand, use, and contribute to your AI-powered chatbot.
